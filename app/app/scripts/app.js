@@ -38,6 +38,38 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 				}
 			}
 		})
+	.state('app.events', {
+		url: "/events",
+		views: {
+			'menuContent': {
+				templateUrl:"templates/events.html"
+			}
+		}
+	})
+	.state('app.event', {
+		url:"/events/:eventId",
+		views: {
+			'menuContent': {
+				templateUrl:"templates/event.html"
+			}
+		}
+	})
+	.state('app.about', {
+		url:"/about",
+		views:{
+			'menuContent':{
+				templateUrl:"templates/about.html"
+			}
+		}
+	})
+	.state('app.news', {
+		url:"/news",
+		views:{
+			'menuContent':{
+				templateUrl:"templates/news.html"
+			}
+		}
+	})
 		//routing for nonexisting urls
 	$urlRouterProvider.otherwise('/app/start');
 });
