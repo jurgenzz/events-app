@@ -51,7 +51,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url:"/events/:eventId",
 		views: {
 			'menuContent': {
-				templateUrl:"templates/event.html"
+				templateUrl:"templates/event.html",
+				controller: "singleCtrl"
 			}
 		}
 	})
