@@ -42,7 +42,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url: "/events",
 		views: {
 			'menuContent': {
-				templateUrl:"templates/events.html"
+				templateUrl:"templates/events.html",
+				controller: "eventsCtrl"
 			}
 		}
 	})
