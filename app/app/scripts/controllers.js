@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
 		}
 	]
 		//$http.get lets get our event information
-	$http.get('https://api.mongolab.com/api/1/databases/events/collections/event?apiKey=4MmcxwAO0pGJo22EHw8wYjeq-V5zO28a')
+	$http.get('https://api.mongolab.com/api/1/databases/events/collections/event?apiKey=YOUR_API_KEY')
 		.success(function (data) {
 			//saving data to $scope.events
 			$scope.events = data;
@@ -28,12 +28,27 @@ angular.module('starter.controllers', [])
 
 .controller('singleCtrl', function ($http, $scope, $stateParams) {
 	//fall back is there is no info in our event
-	$scope.event = "";
+	$scope.event = [
+			{
+				"name": "No events added",
+				"desc": "sad face",
+				"img": ""
+		}
+	]
 	//getting event id from $stateParams (/events/:eventId, where eventId IS the $stateParams)
 	$scope.eventId = $stateParams.eventId;
-	$http.get('https://api.mongolab.com/api/1/databases/events/collections/event/' + $scope.eventId + '?apiKey=4MmcxwAO0pGJo22EHw8wYjeq-V5zO28a')
+	$http.get('https://api.mongolab.com/api/1/databases/events/collections/event/' + $scope.eventId + '?apiKey=YOUR_API_KEY')
 		.success(function (data) {
 		$scope.event = data;
 			console.log(data);
 		});
+})
+
+.controller('newsCtrl', function($http, $scope) {
+	$http.jsonp('https://public-api.wordpress.com/rest/v1.1/sites/theoneylf.wordpress.com/posts/?callback=JSON_CALLBACK')
+		.success(function(data) {
+		$scope.posts = data.posts;
+			console.log(data);
+	});
+	
 });
